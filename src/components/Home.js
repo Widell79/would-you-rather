@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import { selectQuestions } from "../features/questions/questionsSlice";
 
 export function Home() {
-  const questions = useSelector(selectQuestions);
   const dispatch = useDispatch();
 
   return (
     <div>
-      <h2>Hi</h2>
+      <h3 className="center">Questions</h3>
+
+      <ul className="dashboard-list"></ul>
     </div>
   );
 }
