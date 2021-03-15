@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import logo from "./logo.svg";
+
 import { useSelector, useDispatch } from "react-redux";
 import Nav from "./components/Nav";
 
@@ -8,7 +8,6 @@ import { handleInitialData } from "./features/shared/shared";
 import { selectAuthedUser } from "./features/users/authedUserSlice";
 
 import Home from "./components/Home";
-import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,16 +20,14 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Router>
-          <Nav />
-          {loading === true ? null : (
-            <div>
-              <Route path="/" exact component={Home} />
-            </div>
-          )}
-        </Router>
-      </header>
+      <Router>
+        <Nav />
+        {loading === true ? null : (
+          <div>
+            <Route path="/" exact component={Home} />
+          </div>
+        )}
+      </Router>
     </div>
   );
 }
