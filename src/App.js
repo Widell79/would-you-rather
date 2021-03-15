@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -19,18 +19,18 @@ function App() {
   let loading = authedUser === null;
 
   return (
-    <div className="App">
-      <Router>
-        <Nav />
-        {loading === true ? (
-          <SignIn />
-        ) : (
-          <div>
+    <Router>
+      <Fragment>
+        <div className="App">
+          <Nav />
+          {loading === true ? (
+            <SignIn />
+          ) : (
             <Route path="/" exact component={Home} />
-          </div>
-        )}
-      </Router>
-    </div>
+          )}
+        </div>
+      </Fragment>
+    </Router>
   );
 }
 
