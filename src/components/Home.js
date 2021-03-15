@@ -1,10 +1,9 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { selectQuestions } from "../features/questions/questionsSlice";
 
 export function Home() {
-  const dispatch = useDispatch();
   const questions = useSelector(selectQuestions);
 
   function mapStateToList(questions) {
@@ -12,11 +11,11 @@ export function Home() {
       questionsIds: Object.keys(questions).sort(
         (a, b) => questions[b].timestamp - questions[a].timestamp
       ),
+      questionsValue: Object.values(questions),
     };
   }
 
   const questionList = mapStateToList(questions);
-  console.log(questionList);
 
   return (
     <div>

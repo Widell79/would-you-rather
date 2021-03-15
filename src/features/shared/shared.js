@@ -3,7 +3,8 @@ import { receive_questions } from "../questions/questionsSlice";
 import { receive_users } from "../users/usersSlice";
 import { setAuthedUser } from "../users/authedUserSlice";
 
-const AUTHED_ID = "tylermcginnis";
+//const AUTHED_ID = "tylermcginnis";
+const AUTHED_ID = null;
 
 //dispatch actioncreators
 export const handleInitialData = () => {

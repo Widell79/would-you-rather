@@ -16,6 +16,11 @@ a {
   max-width: 1000px;
   margin: 0 auto;
   padding: 10px;
+  border: 1px solid #dad7d7;
+}
+
+.form-control {
+  width: 10rem;
 }
 
 .btn {
