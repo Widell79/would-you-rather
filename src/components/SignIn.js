@@ -1,9 +1,23 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import logo from "../images/logo.png";
 import { selectUsers } from "../features/users/usersSlice";
+import { setAuthedUser } from "../features/users/authedUserSlice";
 
 const SignIn = () => {
+  const [userLogin, setUserLogin] = useState("");
+
+  const handleChange = (e) => {
+    setUserLogin(e.target.value);
+  };
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setAuthedUser(userLogin));
+  };
+
   const users = useSelector(selectUsers);
 
   function mapStateToList(users) {
@@ -22,19 +36,20 @@ const SignIn = () => {
       <img src={logo} alt="" />
       <h3>Sign In</h3>
 
-      <div>
+      <form onChange={handleChange} onSubmit={handleSubmit}>
         <label htmlFor="users"></label>
-        <select name="users" id="123" className="form-control">
+        <select name="users" className="form-control">
           <option value="" />
           {usersList.usersValue.map((user) => {
             return (
-              <option key={user.id} value={user.id}>
+              <option key={user.id} value={user.name}>
                 {user.name}
               </option>
             );
           })}
         </select>
-      </div>
+        <button>Sign in</button>
+      </form>
     </div>
   );
 };
