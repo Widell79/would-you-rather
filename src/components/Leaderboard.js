@@ -17,6 +17,7 @@ const Leaderboard = (props) => {
   const leader = usersList.usersValue.map((user) => {
     return {
       user: user.name,
+      avatar: user.avatarURL,
       answers: Object.keys(user.answers).length,
       questions: Object.keys(user.questions).length,
       total:
@@ -27,15 +28,22 @@ const Leaderboard = (props) => {
   return (
     <div>
       <h3 className="center">Leaderboard</h3>
-      <ul>
-        {leader.map((lead) => {
-          return (
-            <li>
-              {lead.user}: {lead.total}
-            </li>
-          );
-        })}
-      </ul>
+      <div className="question">
+        <div className="info">
+          <ul>
+            {leader.map((lead) => {
+              return (
+                <>
+                  <img src={lead.avatar} alt={`Avatar of`} className="avatar" />
+                  <li>
+                    {lead.user}: {lead.total}
+                  </li>
+                </>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

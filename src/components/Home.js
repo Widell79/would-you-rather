@@ -22,7 +22,7 @@ export function Home() {
   return (
     <div>
       <h3 className="center">Unanswered Questions</h3>
-      <ul className="dashboard-list">
+      <ul>
         {questionList.questionsValue.map((question) => (
           <li key={question.id}>
             <Question question={question} />
@@ -30,7 +30,7 @@ export function Home() {
         ))}
       </ul>
       <h3 className="center">Answered Questions</h3>
-      <ul className="dashboard-list">
+      <ul>
         {questionList.questionsValue.map((question) => (
           <li key={question.id}>
             <Question question={question} />
