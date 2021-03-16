@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import QuestionsPage from "./components/QuestionsPage";
 import NewQuestion from "./components/NewQuestion";
+import Leaderboard from "./components/Leaderboard";
 
 import { handleInitialData } from "./features/shared/shared";
 import { selectAuthedUser } from "./features/users/authedUserSlice";
@@ -32,6 +33,7 @@ function App() {
               <Route path="/" exact component={Home} />
               <Route path="/questions/:id" component={QuestionsPage} />
               <Route path="/add" component={NewQuestion} />
+              <Route path="/leaderboard" component={Leaderboard} />
             </Fragment>
           )}
         </div>

@@ -36,7 +36,7 @@ export default function Nav() {
           <li></li>
         ) : (
           <>
-            <li className="user">Hello, {authedUser}</li>{" "}
+            <li className="user">Hello, {authedUser}!</li>{" "}
             <li className="logout" onClick={handleSubmit}>
               Logout
             </li>
