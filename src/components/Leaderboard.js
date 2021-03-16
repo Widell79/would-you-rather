@@ -31,16 +31,15 @@ const Leaderboard = (props) => {
       <div className="question">
         <div className="info">
           <ul>
-            {leader.map((lead) => {
-              return (
-                <>
-                  <img src={lead.avatar} alt={`Avatar of`} className="avatar" />
-                  <li>
-                    {lead.user}: {lead.total}
-                  </li>
-                </>
-              );
-            })}
+            {leader.map((lead) => (
+              <li key={lead.user}>
+                <img src={lead.avatar} alt={`Avatar of`} className="avatar" />
+                <span>{lead.user}</span>
+                <p>Answered Questions: {lead.answers}</p>
+                <p>Created Questions: {lead.questions}</p>
+                <p>Score: {lead.total}</p>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
