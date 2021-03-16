@@ -17,6 +17,7 @@ a {
   margin: 0 auto;
   padding: 10px;
   border: 1px solid #dad7d7;
+  background: #d3e0dc;
 }
 
 .form-control {
@@ -60,6 +61,8 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #ece2e1;
+  margin-bottom: 2rem;
   
 }
 .nav ul {
@@ -81,6 +84,14 @@ li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
+}
+
+.user {
+  color: #75cfb8
+}
+
+.logout {
+  cursor: pointer;
 }
 
 .avatar {

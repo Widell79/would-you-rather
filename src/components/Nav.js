@@ -1,10 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectAuthedUser } from "../features/users/authedUserSlice";
+import { setAuthedUser } from "../features/users/authedUserSlice";
 
 export default function Nav() {
   const authedUser = useSelector(selectAuthedUser);
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setAuthedUser(null));
+  };
 
   return (
     <nav className="nav">
@@ -28,11 +36,9 @@ export default function Nav() {
           <li></li>
         ) : (
           <>
-            <li>Hello, {authedUser}</li>{" "}
-            <li>
-              <NavLink to="/logout" activeClassName="active">
-                Logout
-              </NavLink>
+            <li className="user">Hello, {authedUser}</li>{" "}
+            <li className="logout" onClick={handleSubmit}>
+              Logout
             </li>
           </>
         )}
