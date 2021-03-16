@@ -43,7 +43,7 @@ const Question = ({ question }) => {
         <div>
           <span>{name} asks</span>:
           <ul>
-            <li>{question.optionOne.text}..</li>
+            <li className="question-text">{question.optionOne.text}..</li>
           </ul>
           <Link to={`/questions/${question.id}`}>
             <button>View Poll</button>
