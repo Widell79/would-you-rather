@@ -27,21 +27,27 @@ const Question = ({ question }) => {
       return user.avatarURL;
     });
 
+  const name = usersList.usersValue
+    .filter((user) => {
+      return user.id === question.author;
+    })
+    .map((user) => {
+      return user.name;
+    });
+
   return (
     <div className="tweet">
-      {/* {usersList.usersValue.filter((user) => {
-        return <p>user.id !== question.author</p>;
-      })} */}
-      <img src={avatar} alt={`Avatar of `} className="avatar" />
+      <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
       <div className="tweet-info">
         <div>
-          <span>{question.author}</span>
+          <span>{name} asks:</span>
+          <ul>
+            <li>{question.optionOne.text}..</li>
+          </ul>
           <Link to={`/questions/${question.id}`}>
             <button>View Poll</button>
           </Link>
           {/* <div>{formatDate(timestamp)}</div> */}
-
-          {/* <p>{optionOne.text}</p> */}
         </div>
       </div>
     </div>

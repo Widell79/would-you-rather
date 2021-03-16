@@ -29,6 +29,14 @@ export function Home() {
           </li>
         ))}
       </ul>
+      <h3 className="center">Answered Questions</h3>
+      <ul className="dashboard-list">
+        {questionList.questionsValue.map((question) => (
+          <li key={question.id}>
+            <Question question={question} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
