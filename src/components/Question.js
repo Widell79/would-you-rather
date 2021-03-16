@@ -37,11 +37,11 @@ const Question = ({ question }) => {
     });
 
   return (
-    <div className="tweet">
+    <div className="question">
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-      <div className="tweet-info">
+      <div className="info">
         <div>
-          <span>{name} asks:</span>
+          <span>{name} asks</span>:
           <ul>
             <li>{question.optionOne.text}..</li>
           </ul>

@@ -28,10 +28,10 @@ const Leaderboard = (props) => {
     <div>
       <h3 className="center">Leaderboard</h3>
       <ul>
-        {leader.map((u) => {
+        {leader.map((lead) => {
           return (
             <li>
-              {u.user}: {u.total}
+              {lead.user}: {lead.total}
             </li>
           );
         })}
