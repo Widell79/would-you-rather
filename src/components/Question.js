@@ -19,6 +19,7 @@ const Question = ({ question }) => {
   }
 
   const usersList = mapStateToList(users);
+
   const avatar = usersList.usersValue
     .filter((user) => {
       return user.id === question.author;

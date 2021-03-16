@@ -1,6 +1,7 @@
 import React from "react";
 
 const QuestionsPage = (props) => {
+  console.log(props);
   const { id } = props.match.params;
   return (
     <div>
