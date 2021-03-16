@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import Question from "./Question";
+
 import { selectQuestions } from "../features/questions/questionsSlice";
 
 export function Home() {
@@ -19,10 +21,12 @@ export function Home() {
 
   return (
     <div>
-      <h3 className="center">Questions</h3>
+      <h3 className="center">Unanswered Questions</h3>
       <ul className="dashboard-list">
-        {questionList.questionsIds.map((id) => (
-          <li key={id}>{id}</li>
+        {questionList.questionsValue.map((question) => (
+          <li key={question.id}>
+            <Question question={question} />
+          </li>
         ))}
       </ul>
     </div>
