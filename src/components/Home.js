@@ -16,6 +16,8 @@ export function Home() {
   const questionList = mapQuestionsToList(questions);
   const usersList = mapUsersToList(users);
 
+  const answeredQByUser = Object.keys(users[authedUser].answers);
+
   const questionInfo = questionList.questionsValue.map((question) => {
     return {
       id: question.id,
@@ -26,25 +28,6 @@ export function Home() {
     };
   });
   questionInfo.sort((l1, l2) => l2.timestamp - l1.timestamp);
-
-  const authedUserAnswers = usersList.usersValue
-    .filter((user) => {
-      return user.name === authedUser;
-    })
-    .map((u) => {
-      return {
-        id: Object.keys(u.answers),
-      };
-    });
-
-  const userQuestionsId = authedUserAnswers.map((id) => {
-    return id.id;
-  });
-  console.log(userQuestionsId);
-
-  const questionsId = questionInfo.map((id) => {
-    return id.id;
-  });
 
   return (
     <div>

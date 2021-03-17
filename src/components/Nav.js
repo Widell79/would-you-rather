@@ -4,8 +4,14 @@ import { NavLink } from "react-router-dom";
 import { selectAuthedUser } from "../features/users/authedUserSlice";
 import { setAuthedUser } from "../features/users/authedUserSlice";
 
+import { mapUsersToList } from "../utils/helpers";
+import { selectUsers } from "../features/users/usersSlice";
+
 export default function Nav() {
   const authedUser = useSelector(selectAuthedUser);
+
+  const users = useSelector(selectUsers);
+  const usersList = mapUsersToList(users);
 
   const dispatch = useDispatch();
 
@@ -13,6 +19,14 @@ export default function Nav() {
     e.preventDefault();
     dispatch(setAuthedUser(null));
   };
+
+  const name = usersList.usersValue
+    .filter((user) => {
+      return user.id === authedUser;
+    })
+    .map((user) => {
+      return user.name;
+    });
 
   return (
     <nav className="nav">
@@ -36,7 +50,7 @@ export default function Nav() {
           <li></li>
         ) : (
           <>
-            <li className="user">Hello, {authedUser}!</li>{" "}
+            <li className="user">Hello, {name}!</li>{" "}
             <li className="logout" onClick={handleSubmit}>
               Logout
             </li>

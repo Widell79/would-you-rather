@@ -28,7 +28,11 @@ const Leaderboard = (props) => {
           <ul>
             {leader.map((lead) => (
               <li key={lead.user}>
-                <img src={lead.avatar} alt={`Avatar of`} className="avatar" />
+                <img
+                  src={lead.avatar}
+                  alt={`Avatar of ${lead.user}`}
+                  className="avatar"
+                />
                 <span>{lead.user}</span>
                 <p>Answered Questions: {lead.answers}</p>
                 <p>Created Questions: {lead.questions}</p>

@@ -35,7 +35,7 @@ const SignIn = () => {
           <option value="" />
           {usersList.usersValue.map((user) => {
             return (
-              <option key={user.id} value={user.name}>
+              <option key={user.id} value={user.id}>
                 {user.name}
               </option>
             );
