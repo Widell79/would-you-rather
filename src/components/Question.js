@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
+import { mapUsersToList } from "../utils/helpers";
+
 import { selectUsers } from "../features/users/usersSlice";
 import { formatDate } from "../utils/helpers";
 
@@ -11,15 +13,7 @@ const Question = ({ author, optionOne, optionTwo, id, timestamp }) => {
   //   }
 
   const users = useSelector(selectUsers);
-
-  function mapStateToList(users) {
-    return {
-      usersIds: Object.keys(users),
-      usersValue: Object.values(users),
-    };
-  }
-
-  const usersList = mapStateToList(users);
+  const usersList = mapUsersToList(users);
 
   const avatar = usersList.usersValue
     .filter((user) => {

@@ -26,3 +26,16 @@ export function formatTweet(tweet, author, authedUser, parentTweet) {
         },
   };
 }
+
+export function mapUsersToList(users) {
+  return {
+    usersIds: Object.keys(users),
+    usersValue: Object.values(users),
+  };
+}
+
+export function mapQuestionsToList(questions) {
+  return {
+    questionsValue: Object.values(questions),
+  };
+}

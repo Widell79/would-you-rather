@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../images/logo.png";
+import { mapUsersToList } from "../utils/helpers";
 import { selectUsers } from "../features/users/usersSlice";
 import { setAuthedUser } from "../features/users/authedUserSlice";
 
@@ -19,15 +20,7 @@ const SignIn = () => {
   };
 
   const users = useSelector(selectUsers);
-
-  function mapStateToList(users) {
-    return {
-      usersIds: Object.keys(users),
-      usersValue: Object.values(users),
-    };
-  }
-
-  const usersList = mapStateToList(users);
+  const usersList = mapUsersToList(users);
 
   return (
     <div className="container">

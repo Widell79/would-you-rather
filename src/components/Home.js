@@ -2,19 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import Question from "./Question";
+import { mapQuestionsToList } from "../utils/helpers";
 
 import { selectQuestions } from "../features/questions/questionsSlice";
+import { selectAuthedUser } from "../features/users/authedUserSlice";
+import { selectUsers } from "../features/users/usersSlice";
 
 export function Home() {
   const questions = useSelector(selectQuestions);
+  const authedUser = useSelector(selectAuthedUser);
+  const users = useSelector(selectUsers);
 
-  function mapStateToList(questions) {
-    return {
-      questionsValue: Object.values(questions),
-    };
-  }
-
-  const questionList = mapStateToList(questions);
+  const questionList = mapQuestionsToList(questions);
 
   const questionInfo = questionList.questionsValue.map((question) => {
     return {
@@ -26,6 +25,16 @@ export function Home() {
     };
   });
   questionInfo.sort((l1, l2) => l2.timestamp - l1.timestamp);
+
+  //Todo: if question.id in authedUser answeres
+  // const name = usersList.usersValue
+  //   .filter((user) => {
+  //     return user.id === author;
+  //   })
+  //   .map((user) => {
+  //     return user.name;
+  //   });
+  // console.log(authedUser);
 
   return (
     <div>

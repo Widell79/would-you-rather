@@ -1,18 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectUsers } from "../features/users/usersSlice";
+import { mapUsersToList } from "../utils/helpers";
 
 const Leaderboard = (props) => {
   const users = useSelector(selectUsers);
-
-  function mapStateToList(users) {
-    return {
-      usersIds: Object.keys(users),
-      usersValue: Object.values(users),
-    };
-  }
-
-  const usersList = mapStateToList(users);
+  const usersList = mapUsersToList(users);
 
   const leader = usersList.usersValue.map((user) => {
     return {
