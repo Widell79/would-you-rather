@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import Question from "./Question";
-import { mapQuestionsToList } from "../utils/helpers";
+import { mapQuestionsToList, mapUsersToList } from "../utils/helpers";
 
 import { selectQuestions } from "../features/questions/questionsSlice";
 import { selectAuthedUser } from "../features/users/authedUserSlice";
@@ -14,6 +14,7 @@ export function Home() {
   const users = useSelector(selectUsers);
 
   const questionList = mapQuestionsToList(questions);
+  const usersList = mapUsersToList(users);
 
   const questionInfo = questionList.questionsValue.map((question) => {
     return {
@@ -26,15 +27,24 @@ export function Home() {
   });
   questionInfo.sort((l1, l2) => l2.timestamp - l1.timestamp);
 
-  //Todo: if question.id in authedUser answeres
-  // const name = usersList.usersValue
-  //   .filter((user) => {
-  //     return user.id === author;
-  //   })
-  //   .map((user) => {
-  //     return user.name;
-  //   });
-  // console.log(authedUser);
+  const authedUserAnswers = usersList.usersValue
+    .filter((user) => {
+      return user.name === authedUser;
+    })
+    .map((u) => {
+      return {
+        id: Object.keys(u.answers),
+      };
+    });
+
+  const userQuestionsId = authedUserAnswers.map((id) => {
+    return id.id;
+  });
+  console.log(userQuestionsId);
+
+  const questionsId = questionInfo.map((id) => {
+    return id.id;
+  });
 
   return (
     <div>
