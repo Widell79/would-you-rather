@@ -12,6 +12,10 @@ a {
   color: #252525;
 }
 
+p {
+  margin: 0.5rem;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -105,7 +109,7 @@ li p {
 .question {
   width: 100%;
   max-width: 40rem;
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   margin: auto;
   border: 1px solid #dad7d7;
