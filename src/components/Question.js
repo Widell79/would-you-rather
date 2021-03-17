@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
 import { selectUsers } from "../features/users/usersSlice";
+import { formatDate } from "../utils/helpers";
 
-const Question = ({ question }) => {
+const Question = ({ author, optionOne, optionTwo, id, timestamp }) => {
   //   if (question.id === null) {
   //     return <p>This Question doesn't exist</p>;
   //   }
@@ -22,7 +23,7 @@ const Question = ({ question }) => {
 
   const avatar = usersList.usersValue
     .filter((user) => {
-      return user.id === question.author;
+      return user.id === author;
     })
     .map((user) => {
       return user.avatarURL;
@@ -30,7 +31,7 @@ const Question = ({ question }) => {
 
   const name = usersList.usersValue
     .filter((user) => {
-      return user.id === question.author;
+      return user.id === author;
     })
     .map((user) => {
       return user.name;
@@ -43,12 +44,12 @@ const Question = ({ question }) => {
         <div>
           <span>{name} asks</span>:
           <ul>
-            <li className="question-text">{question.optionOne.text}..</li>
+            <li className="question-text">{optionOne}..</li>
           </ul>
-          <Link to={`/questions/${question.id}`}>
+          <Link to={`/questions/${id}`}>
             <button>View Poll</button>
           </Link>
-          {/* <div>{formatDate(timestamp)}</div> */}
+          <p>{formatDate(timestamp)}</p>
         </div>
       </div>
     </div>

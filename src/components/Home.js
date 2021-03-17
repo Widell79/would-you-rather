@@ -10,33 +10,41 @@ export function Home() {
 
   function mapStateToList(questions) {
     return {
-      questionsIds: Object.keys(questions).sort(
-        (a, b) => questions[b].timestamp - questions[a].timestamp
-      ),
       questionsValue: Object.values(questions),
     };
   }
 
   const questionList = mapStateToList(questions);
 
+  const questionInfo = questionList.questionsValue.map((question) => {
+    return {
+      id: question.id,
+      timestamp: question.timestamp,
+      author: question.author,
+      optionOne: question.optionOne.text,
+      optionTwo: question.optionTwo.text,
+    };
+  });
+  questionInfo.sort((l1, l2) => l2.timestamp - l1.timestamp);
+
   return (
     <div>
       <h3 className="center">Unanswered Questions</h3>
       <ul>
-        {questionList.questionsValue.map((question) => (
+        {questionInfo.map((question) => (
           <li key={question.id}>
-            <Question question={question} />
+            <Question
+              author={question.author}
+              id={question.id}
+              timestamp={question.timestamp}
+              optionOne={question.optionOne}
+              optionTwo={question.optionTwo}
+            />
           </li>
         ))}
       </ul>
       <h3 className="center">Answered Questions</h3>
-      <ul>
-        {questionList.questionsValue.map((question) => (
-          <li key={question.id}>
-            <Question question={question} />
-          </li>
-        ))}
-      </ul>
+      <ul></ul>
     </div>
   );
 }
