@@ -25,6 +25,8 @@ const Leaderboard = (props) => {
     };
   });
 
+  leader.sort((l1, l2) => l2.total - l1.total);
+
   return (
     <div>
       <h3 className="center">Leaderboard</h3>
