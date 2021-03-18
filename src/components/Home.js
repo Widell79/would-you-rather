@@ -16,9 +16,17 @@ export function Home() {
   const questionList = mapQuestionsToList(questions);
   const usersList = mapUsersToList(users);
 
-  const answeredQByUser = Object.keys(users[authedUser].answers);
+  const answeredQByUserList = Object.keys(users[authedUser].answers);
 
-  const questionInfo = questionList.questionsValue.map((question) => {
+  const unanswered = Object.values(questions).filter(
+    (question) => !answeredQByUserList.includes(question.id)
+  );
+
+  const answered = Object.values(questions).filter((question) =>
+    answeredQByUserList.includes(question.id)
+  );
+
+  const unansweredQuestionInfo = unanswered.map((question) => {
     return {
       id: question.id,
       timestamp: question.timestamp,
@@ -27,13 +35,24 @@ export function Home() {
       optionTwo: question.optionTwo.text,
     };
   });
-  questionInfo.sort((l1, l2) => l2.timestamp - l1.timestamp);
+  unansweredQuestionInfo.sort((l1, l2) => l2.timestamp - l1.timestamp);
+
+  const answeredQuestionInfo = answered.map((question) => {
+    return {
+      id: question.id,
+      timestamp: question.timestamp,
+      author: question.author,
+      optionOne: question.optionOne.text,
+      optionTwo: question.optionTwo.text,
+    };
+  });
+  answeredQuestionInfo.sort((l1, l2) => l2.timestamp - l1.timestamp);
 
   return (
     <div>
       <h3 className="center">Unanswered Questions</h3>
       <ul>
-        {questionInfo.map((question) => (
+        {unansweredQuestionInfo.map((question) => (
           <li key={question.id}>
             <Question
               author={question.author}
@@ -46,7 +65,19 @@ export function Home() {
         ))}
       </ul>
       <h3 className="center">Answered Questions</h3>
-      <ul></ul>
+      <ul>
+        {answeredQuestionInfo.map((question) => (
+          <li key={question.id}>
+            <Question
+              author={question.author}
+              id={question.id}
+              timestamp={question.timestamp}
+              optionOne={question.optionOne}
+              optionTwo={question.optionTwo}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
