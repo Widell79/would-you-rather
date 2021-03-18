@@ -1,9 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import ErrorPage from "./ErrorPage";
+
+import { selectAuthedUser } from "../features/users/authedUserSlice";
+import { selectUsers } from "../features/users/usersSlice";
 
 const QuestionsPage = (props) => {
   const { id } = props.match.params;
-  // const answered = user.answers[question_id];
+
+  const authedUser = useSelector(selectAuthedUser);
+  const users = useSelector(selectUsers);
+
+  const answeredQByUserList = Object.keys(users[authedUser].answers).includes(
+    id
+  );
 
   if (!id) {
     return <ErrorPage />;
@@ -11,17 +21,17 @@ const QuestionsPage = (props) => {
 
   return (
     <div className="question">
-      {id}
-      {/* {answered ? <QuestionPoll /> : <QuestionPollResults />} */}
+      {answeredQByUserList ? (
+        <p>Question Answered</p>
+      ) : (
+        <p>Question not Answered</p>
+      )}
     </div>
   );
 };
 
 export default QuestionsPage;
 
-//Todo
-// From the home page, when any poll is clicked, we need to redirect the user to the /questions/:question_id route.
-
-// At this route, we can render a component that takes the question_id from the URL and checks if the logged in user has answered that question..
+//Todo:
 // If the question is answered, it can render the ViewPollResult component.
 // Else, if the question is unanswered, it can render the ViewPollQuestion component.
