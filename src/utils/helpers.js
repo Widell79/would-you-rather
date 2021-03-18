@@ -40,16 +40,34 @@ export function mapQuestionsToList(questions) {
   };
 }
 
-export function answeredQuestions(users, authedUser, questions) {
+export function unansweredQuestionsInfo(users, authedUser, questions) {
   const answeredQByUserList = Object.keys(users[authedUser].answers);
-  return Object.values(questions).filter((question) =>
-    answeredQByUserList.includes(question.id)
-  );
+  return Object.values(questions)
+    .filter((question) => !answeredQByUserList.includes(question.id))
+    .map((question) => {
+      return {
+        id: question.id,
+        timestamp: question.timestamp,
+        author: question.author,
+        optionOne: question.optionOne,
+        optionTwo: question.optionTwo,
+      };
+    })
+    .sort((l1, l2) => l2.timestamp - l1.timestamp);
 }
 
-export function unansweredQuestions(users, authedUser, questions) {
+export function answeredQuestionsInfo(users, authedUser, questions) {
   const answeredQByUserList = Object.keys(users[authedUser].answers);
-  return Object.values(questions).filter(
-    (question) => !answeredQByUserList.includes(question.id)
-  );
+  return Object.values(questions)
+    .filter((question) => answeredQByUserList.includes(question.id))
+    .map((question) => {
+      return {
+        id: question.id,
+        timestamp: question.timestamp,
+        author: question.author,
+        optionOne: question.optionOne,
+        optionTwo: question.optionTwo,
+      };
+    })
+    .sort((l1, l2) => l2.timestamp - l1.timestamp);
 }
