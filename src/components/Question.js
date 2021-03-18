@@ -50,7 +50,4 @@ const Question = ({ author, optionOne, optionTwo, id, timestamp }) => {
   );
 };
 
-//we're passing an id prop along to the Tweet component
-//Because we're doing this, the mapStateToProps function's second argument (ownProps) will be an object that has an id property
-
 export default withRouter(Question);

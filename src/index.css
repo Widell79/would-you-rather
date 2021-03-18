@@ -32,7 +32,7 @@ p {
   text-transform: uppercase;
   margin: 35px auto;
   padding: 10px;
-  border: 1px solid rgba(0,0,0,.29);
+  border: 1px solid rgba(0, 0, 0, 0.29);
   cursor: pointer;
   background: #fff;
   font-size: 16px;
@@ -41,7 +41,7 @@ p {
 }
 
 .btn:hover {
-  border-color: rgba(0,0,0,.5);
+  border-color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
 
@@ -67,7 +67,6 @@ p {
   justify-content: center;
   background: #ece2e1;
   margin-bottom: 2rem;
-  
 }
 .nav ul {
   display: flex;
@@ -75,7 +74,6 @@ p {
   justify-content: flex-start;
   text-decoration: none;
 }
-
 
 ul {
   padding-left: 0;
@@ -85,7 +83,6 @@ li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
-  
 }
 
 li p {
@@ -93,7 +90,7 @@ li p {
 }
 
 .user {
-  color: #75cfb8
+  color: #75cfb8;
 }
 
 .logout {
@@ -114,7 +111,6 @@ li p {
   margin: auto;
   border: 1px solid #dad7d7;
   border-radius: 3px;
-  cursor: pointer;
 }
 
 .question-text {
@@ -123,13 +119,5 @@ li p {
 
 .info {
   display: flex;
-  margin: auto
+  margin: auto;
 }
-
-
-
-
-
-
-
-

@@ -1,11 +1,18 @@
 import React from "react";
+import ErrorPage from "./ErrorPage";
 
 const QuestionsPage = (props) => {
   const { id } = props.match.params;
+  // const answered = user.answers[question_id];
+
+  if (!id) {
+    return <ErrorPage />;
+  }
+
   return (
-    <div>
-      <h3 className="center">Question Poll</h3>
-      <p>{id}</p>
+    <div className="question">
+      {id}
+      {/* {answered ? <QuestionPoll /> : <QuestionPollResults />} */}
     </div>
   );
 };

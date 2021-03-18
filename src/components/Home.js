@@ -2,29 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import Question from "./Question";
-import { mapQuestionsToList, mapUsersToList } from "../utils/helpers";
 
 import { selectQuestions } from "../features/questions/questionsSlice";
 import { selectAuthedUser } from "../features/users/authedUserSlice";
 import { selectUsers } from "../features/users/usersSlice";
 
-export function Home() {
+import { answeredQuestions, unansweredQuestions } from "../utils/helpers";
+
+const Home = () => {
   const questions = useSelector(selectQuestions);
   const authedUser = useSelector(selectAuthedUser);
   const users = useSelector(selectUsers);
 
-  const questionList = mapQuestionsToList(questions);
-  const usersList = mapUsersToList(users);
-
-  const answeredQByUserList = Object.keys(users[authedUser].answers);
-
-  const unanswered = Object.values(questions).filter(
-    (question) => !answeredQByUserList.includes(question.id)
-  );
-
-  const answered = Object.values(questions).filter((question) =>
-    answeredQByUserList.includes(question.id)
-  );
+  const unanswered = unansweredQuestions(users, authedUser, questions);
+  const answered = answeredQuestions(users, authedUser, questions);
 
   const unansweredQuestionInfo = unanswered.map((question) => {
     return {
@@ -80,6 +71,6 @@ export function Home() {
       </ul>
     </div>
   );
-}
+};
 
 export default Home;
