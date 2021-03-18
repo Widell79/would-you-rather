@@ -87,6 +87,8 @@ export function answeredQuestionsInfo(users, authedUser, questions) {
         author: question.author,
         optionOne: question.optionOne,
         optionTwo: question.optionTwo,
+        hasVoted1: question.optionOne.votes.includes(authedUser),
+        hasVoted2: question.optionTwo.votes.includes(authedUser),
       };
     })
     .sort((l1, l2) => l2.timestamp - l1.timestamp);
