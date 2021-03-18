@@ -34,6 +34,26 @@ export function mapUsersToList(users) {
   };
 }
 
+export function avatarURL(userList, author) {
+  return Object.values(userList)
+    .filter((user) => {
+      return user.id === author;
+    })
+    .map((user) => {
+      return user.avatarURL;
+    });
+}
+
+export function usernameToName(userList, author) {
+  return Object.values(userList)
+    .filter((user) => {
+      return user.id === author;
+    })
+    .map((user) => {
+      return user.name;
+    });
+}
+
 export function mapQuestionsToList(questions) {
   return {
     questionsValue: Object.values(questions),
