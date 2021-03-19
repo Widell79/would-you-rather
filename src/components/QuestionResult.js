@@ -7,6 +7,7 @@ const QuestionResult = ({ details, avatar, name }) => {
       <div className="info">
         <div>
           <span>Asked by {name}</span>
+          <p>Results:</p>
           <ul>
             <li
               className="question-text"
@@ -16,7 +17,7 @@ const QuestionResult = ({ details, avatar, name }) => {
                   : { color: "black" }
               }
             >
-              - {details[0].optionOne.text}
+              - Would you rather {details[0].optionOne.text}?
             </li>
             <p className="votes">
               Number of votes: {details[0].optionOneVotes}
@@ -32,7 +33,7 @@ const QuestionResult = ({ details, avatar, name }) => {
                   : { color: "black" }
               }
             >
-              - {details[0].optionTwo.text}
+              - Would you rather {details[0].optionTwo.text}?
             </li>
             <p className="votes">
               Number of votes: {details[0].optionTwoVotes}
