@@ -23,19 +23,32 @@ const QuestionsPage = (props) => {
     return Object.values(questions)
       .filter((question) => question.id === id)
       .map((question) => {
+        const optionOneTotalVotes = question.optionOne.votes.length;
+        const optionTwototalVotes = question.optionTwo.votes.length;
+        const totalVotes = optionOneTotalVotes + optionTwototalVotes;
         return {
           id: question.id,
           timestamp: question.timestamp,
           author: question.author,
           optionOne: question.optionOne,
+          optionOneVotes: optionOneTotalVotes,
           optionTwo: question.optionTwo,
-          hasVoted1: question.optionOne.votes.includes(authedUser),
-          hasVoted2: question.optionTwo.votes.includes(authedUser),
+          optionTwoVotes: optionTwototalVotes,
+          hasVotedOne: question.optionOne.votes.includes(authedUser),
+          hasVotedTwo: question.optionTwo.votes.includes(authedUser),
+          total: totalVotes,
+          percentVotesOne: ((optionOneTotalVotes / totalVotes) * 100).toFixed(
+            0
+          ),
+          percentVotesTwo: ((optionTwototalVotes / totalVotes) * 100).toFixed(
+            0
+          ),
         };
       });
   }
 
   const details = QuestionInfo(questions, id);
+  console.log(details);
 
   if (!id) {
     return <ErrorPage />;
@@ -48,28 +61,40 @@ const QuestionsPage = (props) => {
           <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
           <div className="info">
             <div>
-              <span>{name} asks</span>:
+              <span>Asked by {name}</span>
               <ul>
                 <li
                   className="question-text"
                   style={
-                    details[0].hasVoted1
+                    details[0].hasVotedOne
                       ? { color: "#75cfb8" }
                       : { color: "black" }
                   }
                 >
-                  1: {details[0].optionOne.text}
+                  - {details[0].optionOne.text}
                 </li>
+                <p className="votes">
+                  Number of votes: {details[0].optionOneVotes}
+                </p>
+                <p className="votes">
+                  Percentage of votes: {details[0].percentVotesOne}%
+                </p>
                 <li
                   className="question-text"
                   style={
-                    details[0].hasVoted2
+                    details[0].hasVotedTwo
                       ? { color: "#75cfb8" }
                       : { color: "black" }
                   }
                 >
-                  2: {details[0].optionTwo.text}
+                  - {details[0].optionTwo.text}
                 </li>
+                <p className="votes">
+                  Number of votes: {details[0].optionTwoVotes}
+                </p>
+                <p className="votes">
+                  Percentage of votes: {details[0].percentVotesTwo}%
+                </p>
               </ul>
             </div>
           </div>

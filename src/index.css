@@ -121,3 +121,7 @@ li p {
   display: flex;
   margin: auto;
 }
+
+.votes {
+  font-size: calc(1px + 2vmin);
+}
