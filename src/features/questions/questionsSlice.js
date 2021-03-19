@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { add_answer_user } from "../users/usersSlice";
+import { saveQuestionAnswer } from "../../utils/api";
 
 export const questionsSlice = createSlice({
   name: "questions",
@@ -15,11 +16,15 @@ export const questionsSlice = createSlice({
         ...action.payload,
       };
     },
-    save_answer: (state, authedUser, questionId, answer) => {
+    save_answer: (state, questionId, userVote, authedUser) => {
       return {
         ...state,
         [questionId]: {
           ...state[questionId],
+          [userVote]: {
+            ...state[questionId][userVote],
+            votes: [...state[questionId][userVote].votes, authedUser],
+          },
         },
       };
     },
@@ -32,18 +37,19 @@ export const { receive_questions, save_answer } = questionsSlice.actions;
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
-// export const handleSaveAnswer = (obj) => (dispatch) => {
-//   return save_answer(obj)
-//     .then(() => {
-//       dispatch(save_answer(obj));
-//       dispatch(add_answer_user(obj));
-//     })
+export function saveAnswer(obj) {
+  return (dispatch) => {
+    return saveQuestionAnswer(obj)
+      .then(() => {
+        dispatch(save_answer(obj));
+      })
 
-//     .catch((e) => {
-//       console.warn("Error in handleSaveAnswer: ", e);
-//       alert("There was an error saving your the answer. Try again.");
-//     });
-// };
+      .catch((e) => {
+        console.warn("Error in handleSaveAnswer: ", e);
+        alert("There was an error saving your the answer. Try again.");
+      });
+  };
+}
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
