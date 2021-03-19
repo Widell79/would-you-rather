@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectAuthedUser } from "../features/users/authedUserSlice";
+import { save_answer } from "../features/questions/questionsSlice";
 
 const AnswerQuestion = ({ details, avatar, name }) => {
   const [userVote, setUserVote] = useState("");
 
   const authedUser = useSelector(selectAuthedUser);
   const questionId = details[0].id;
+  console.log(authedUser);
+  console.log(questionId);
+  console.log(userVote);
 
   const handleVote = (e) => {
     setUserVote(e.target.value);
@@ -17,15 +21,8 @@ const AnswerQuestion = ({ details, avatar, name }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //dispatch(setAuthedUser(userLogin));
+    dispatch(save_answer(questionId));
   };
-  // dispatch(
-  //   handleSaveAnswer({
-  //     authedUser,
-  //     qid: poll.id,
-  //     answer: e.target.value,
-  //   })
-  // );
 
   return (
     <div className="question">
@@ -43,7 +40,7 @@ const AnswerQuestion = ({ details, avatar, name }) => {
                 name="question"
                 value="optionOne"
               ></input>
-              {details[0].optionOne.text}
+              {details[0].optionOne.text}?
             </li>
 
             <li className="question-text">
@@ -54,10 +51,10 @@ const AnswerQuestion = ({ details, avatar, name }) => {
                 name="question"
                 value="optionTwo"
               ></input>
-              {details[0].optionTwo.text}
+              {details[0].optionTwo.text}?
             </li>
           </ul>
-          <button>Submit</button>
+          <button onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     </div>

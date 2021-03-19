@@ -14,10 +14,15 @@ export const usersSlice = createSlice({
         ...action.payload,
       };
     },
+    add_answer_user: (state, authedUser, questionId, answer) => {
+      return {
+        ...(state[authedUser].answers[questionId] += answer),
+      };
+    },
   },
 });
 
-export const { receive_users } = usersSlice.actions;
+export const { receive_users, add_answer_user } = usersSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This

@@ -8,7 +8,6 @@ export const handleInitialData = () => {
     return getInitialData().then(({ users, questions }) => {
       dispatch(receive_questions(questions));
       dispatch(receive_users(users));
-      //dispatch(setAuthedUser(AUTHED_ID));
     });
   };
 };
