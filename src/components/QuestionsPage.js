@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ErrorPage from "./ErrorPage";
+import QuestionResult from "./QuestionResult";
 import { avatarURL, usernameToName } from "../utils/helpers";
 
 import { selectAuthedUser } from "../features/users/authedUserSlice";
@@ -55,50 +56,9 @@ const QuestionsPage = (props) => {
   }
 
   return (
-    <div className="question">
+    <div>
       {answeredQByUser ? (
-        <>
-          <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-          <div className="info">
-            <div>
-              <span>Asked by {name}</span>
-              <ul>
-                <li
-                  className="question-text"
-                  style={
-                    details[0].hasVotedOne
-                      ? { color: "#75cfb8" }
-                      : { color: "black" }
-                  }
-                >
-                  - {details[0].optionOne.text}
-                </li>
-                <p className="votes">
-                  Number of votes: {details[0].optionOneVotes}
-                </p>
-                <p className="votes">
-                  Percentage of votes: {details[0].percentVotesOne}%
-                </p>
-                <li
-                  className="question-text"
-                  style={
-                    details[0].hasVotedTwo
-                      ? { color: "#75cfb8" }
-                      : { color: "black" }
-                  }
-                >
-                  - {details[0].optionTwo.text}
-                </li>
-                <p className="votes">
-                  Number of votes: {details[0].optionTwoVotes}
-                </p>
-                <p className="votes">
-                  Percentage of votes: {details[0].percentVotesTwo}%
-                </p>
-              </ul>
-            </div>
-          </div>
-        </>
+        <QuestionResult details={details} avatar={avatar} name={name} />
       ) : (
         <p>Question not Answered</p>
       )}
@@ -107,7 +67,3 @@ const QuestionsPage = (props) => {
 };
 
 export default QuestionsPage;
-
-//Todo:
-// If the question is answered, it can render the ViewPollResult component.
-// Else, if the question is unanswered, it can render the ViewPollQuestion component.
