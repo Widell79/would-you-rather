@@ -1,7 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import ErrorPage from "./ErrorPage";
 import QuestionResult from "./QuestionResult";
+import AnswerQuestion from "./AnswerQuestion";
 import { avatarURL, usernameToName } from "../utils/helpers";
 
 import { selectAuthedUser } from "../features/users/authedUserSlice";
@@ -14,9 +16,6 @@ const QuestionsPage = (props) => {
   const authedUser = useSelector(selectAuthedUser);
   const users = useSelector(selectUsers);
   const questions = useSelector(selectQuestions);
-
-  const avatar = avatarURL(users, authedUser);
-  const name = usernameToName(users, authedUser);
 
   const answeredQByUser = Object.keys(users[authedUser].answers).includes(id);
 
@@ -49,7 +48,8 @@ const QuestionsPage = (props) => {
   }
 
   const details = QuestionInfo(questions, id);
-  console.log(details);
+  const name = usernameToName(users, details[0].author);
+  const avatar = avatarURL(users, details[0].author);
 
   if (!id) {
     return <ErrorPage />;
@@ -60,7 +60,7 @@ const QuestionsPage = (props) => {
       {answeredQByUser ? (
         <QuestionResult details={details} avatar={avatar} name={name} />
       ) : (
-        <p>Question not Answered</p>
+        <AnswerQuestion details={details} avatar={avatar} name={name} />
       )}
     </div>
   );
