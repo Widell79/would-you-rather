@@ -14,9 +14,17 @@ export const usersSlice = createSlice({
         ...action.payload,
       };
     },
-    add_answer_user: (state, authedUser, questionId, answer) => {
+    add_answer_user: (state, action) => {
+      const { authedUser, qid, answer } = action.payload;
       return {
-        ...(state[authedUser].answers[questionId] += answer),
+        ...state,
+        [authedUser]: {
+          ...state[authedUser],
+          answers: {
+            ...state[authedUser].answers,
+            [qid]: answer,
+          },
+        },
       };
     },
   },

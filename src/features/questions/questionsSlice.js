@@ -16,14 +16,15 @@ export const questionsSlice = createSlice({
         ...action.payload,
       };
     },
-    save_answer: (state, questionId, userVote, authedUser) => {
+    save_answer: (state, action) => {
+      const { authedUser, qid, answer } = action.payload;
       return {
         ...state,
-        [questionId]: {
-          ...state[questionId],
-          [userVote]: {
-            ...state[questionId][userVote],
-            votes: [...state[questionId][userVote].votes, authedUser],
+        [qid]: {
+          ...state[qid],
+          [answer]: {
+            ...state[qid][answer],
+            votes: [...state[qid][answer].votes, authedUser],
           },
         },
       };
@@ -38,16 +39,17 @@ export const { receive_questions, save_answer } = questionsSlice.actions;
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
 export function saveAnswer(obj) {
-  return (dispatch) => {
-    return saveQuestionAnswer(obj)
-      .then(() => {
-        dispatch(save_answer(obj));
-      })
+  console.log(obj);
+  return async (dispatch) => {
+    try {
+      const qApi = await saveQuestionAnswer(obj);
 
-      .catch((e) => {
-        console.warn("Error in handleSaveAnswer: ", e);
-        alert("There was an error saving your the answer. Try again.");
-      });
+      dispatch(save_answer(obj));
+      dispatch(add_answer_user(obj));
+    } catch (err) {
+      console.warn("Error in saveAnswer: ", err);
+      alert("There was an error saving your the answer. Try again.");
+    }
   };
 }
 

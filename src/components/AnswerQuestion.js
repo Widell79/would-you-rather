@@ -9,9 +9,6 @@ const AnswerQuestion = ({ details, avatar, name }) => {
 
   const authedUser = useSelector(selectAuthedUser);
   const questionId = details[0].id;
-  console.log(authedUser);
-  console.log(questionId);
-  console.log(userVote);
 
   const handleVote = (e) => {
     setUserVote(e.target.value);
@@ -24,8 +21,8 @@ const AnswerQuestion = ({ details, avatar, name }) => {
     dispatch(
       saveAnswer({
         authedUser,
-        questionId,
-        userVote,
+        qid: questionId,
+        answer: userVote,
       })
     );
   };
