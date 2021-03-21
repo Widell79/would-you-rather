@@ -39,16 +39,15 @@ export const { receive_questions, save_answer } = questionsSlice.actions;
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
 export function saveAnswer(obj) {
-  console.log(obj);
   return async (dispatch) => {
     try {
-      const qApi = await saveQuestionAnswer(obj);
+      await saveQuestionAnswer(obj);
 
       dispatch(save_answer(obj));
       dispatch(add_answer_user(obj));
     } catch (err) {
       console.warn("Error in saveAnswer: ", err);
-      alert("There was an error saving your the answer. Try again.");
+      alert("There was an error saving your the answer. Please try again.");
     }
   };
 }

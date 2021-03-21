@@ -5,28 +5,6 @@ export function formatDate(timestamp) {
   return d.toLocaleDateString() + " | " + time.substr(0, 5) + time.slice(-2);
 }
 
-export function formatQuestion(question, author, authedUser) {
-  const { id, optionOne, optionTwo, timestamp } = question;
-  const { name, avatarURL } = author;
-
-  const optionOneTotalVotes = question.optionOne.votes.length;
-  const optionTwototalVotes = question.optionTwo.votes.length;
-  const totalVotes = optionOneTotalVotes + optionTwototalVotes;
-
-  return {
-    name,
-    id,
-    timestamp,
-    optionOne,
-    optionTwo,
-    hasVoted1: optionOne.votes.includes(authedUser),
-    hasVoted2: optionTwo.votes.includes(authedUser),
-    avatar: avatarURL,
-    percentVotes1: ((optionOneTotalVotes / totalVotes) * 100).toFixed(0),
-    percentVotes2: ((optionTwototalVotes / totalVotes) * 100).toFixed(0),
-  };
-}
-
 export function mapUsersToList(users) {
   return {
     usersIds: Object.keys(users),

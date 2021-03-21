@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectUsers } from "../features/users/usersSlice";
 import { mapUsersToList } from "../utils/helpers";
 
-const Leaderboard = (props) => {
+const Leaderboard = () => {
   const users = useSelector(selectUsers);
   const usersList = mapUsersToList(users);
 

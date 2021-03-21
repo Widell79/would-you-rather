@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectAuthedUser } from "../features/users/authedUserSlice";
-import { save_answer, saveAnswer } from "../features/questions/questionsSlice";
+import { saveAnswer } from "../features/questions/questionsSlice";
 
 const AnswerQuestion = ({ details, avatar, name }) => {
   const [userVote, setUserVote] = useState("");

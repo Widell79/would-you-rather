@@ -20,8 +20,8 @@ function App() {
   });
 
   const authedUser = useSelector(selectAuthedUser);
-  //let loading = authedUser === null;
-  const isLoggedIn = authedUser !== null;
+
+  let isLoggedIn = authedUser !== null;
 
   //Todo: Check logout when url is tampered!
 
@@ -31,7 +31,7 @@ function App() {
         <div className="App">
           <Nav />
           {!isLoggedIn ? (
-            <Route path="/" component={SignIn} />
+            <SignIn />
           ) : (
             <Fragment>
               <Switch>
