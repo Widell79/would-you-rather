@@ -21,35 +21,39 @@ const Home = () => {
   const answered = answeredQuestionsInfo(users, authedUser, questions);
 
   return (
-    <div>
-      <h3 className="center">Unanswered Questions</h3>
-      <ul>
-        {unanswered.map((question) => (
-          <li key={question.id}>
-            <Question
-              author={question.author}
-              id={question.id}
-              timestamp={question.timestamp}
-              optionOne={question.optionOne.text}
-              optionTwo={question.optionTwo.text}
-            />
-          </li>
-        ))}
-      </ul>
-      <h3 className="center">Answered Questions</h3>
-      <ul>
-        {answered.map((question) => (
-          <li key={question.id}>
-            <Question
-              author={question.author}
-              id={question.id}
-              timestamp={question.timestamp}
-              optionOne={question.optionOne.text}
-              optionTwo={question.optionTwo.text}
-            />
-          </li>
-        ))}
-      </ul>
+    <div className="grid-container">
+      <div className="grid-item">
+        <h3>Unanswered Questions</h3>
+        <ul>
+          {unanswered.map((question) => (
+            <li key={question.id}>
+              <Question
+                author={question.author}
+                id={question.id}
+                timestamp={question.timestamp}
+                optionOne={question.optionOne.text}
+                optionTwo={question.optionTwo.text}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3>Answered Questions</h3>
+        <ul>
+          {answered.map((question) => (
+            <li key={question.id}>
+              <Question
+                author={question.author}
+                id={question.id}
+                timestamp={question.timestamp}
+                optionOne={question.optionOne.text}
+                optionTwo={question.optionTwo.text}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

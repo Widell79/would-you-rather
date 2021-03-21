@@ -16,7 +16,7 @@ const Question = ({ author, optionOne, optionTwo, id, timestamp }) => {
   return (
     <div className="question">
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-      <div className="info">
+      <div className="center">
         <div>
           <span>{name} asks</span>:
           <ul>

@@ -57,7 +57,7 @@ const NewQuestion = () => {
               onChange={questionTwoHandler}
             />
             <button
-              className="btn"
+              className="my-btn"
               type="submit"
               disabled={questionOne === "" || questionTwo === ""}
             >
