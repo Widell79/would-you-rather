@@ -9,9 +9,10 @@ import { avatarURL, usernameToName } from "../utils/helpers";
 import { selectAuthedUser } from "../features/users/authedUserSlice";
 import { selectUsers } from "../features/users/usersSlice";
 import { selectQuestions } from "../features/questions/questionsSlice";
+import { useParams } from "react-router";
 
-const QuestionsPage = (props) => {
-  const { id } = props.match.params;
+const QuestionsPage = () => {
+  const { id } = useParams();
 
   const authedUser = useSelector(selectAuthedUser);
   const users = useSelector(selectUsers);

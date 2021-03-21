@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { selectAuthedUser } from "../features/users/authedUserSlice";
 import { setAuthedUser } from "../features/users/authedUserSlice";
 
@@ -14,10 +14,12 @@ export default function Nav() {
   const usersList = mapUsersToList(users);
 
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(setAuthedUser(null));
+    history.push("/");
   };
 
   const name = usersList.usersValue
@@ -32,7 +34,7 @@ export default function Nav() {
     <nav className="nav">
       <ul>
         <li>
-          <NavLink to="/" exact activeClassName="active">
+          <NavLink to="/home" activeClassName="active">
             Home
           </NavLink>
         </li>

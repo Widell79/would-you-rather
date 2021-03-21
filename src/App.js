@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import Nav from "./components/Nav";
+
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import QuestionsPage from "./components/QuestionsPage";
@@ -28,18 +29,28 @@ function App() {
   return (
     <Router>
       <Fragment>
+        <Nav />
         <div className="App">
-          <Nav />
           {!isLoggedIn ? (
             <SignIn />
           ) : (
             <Fragment>
               <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/questions/:id" component={QuestionsPage} />
-                <Route path="/add" component={NewQuestion} />
-                <Route path="/leaderboard" component={Leaderboard} />
-                <Route path="/404" component={ErrorPage} />
+                <Route path="/add">
+                  <NewQuestion />
+                </Route>
+                <Route path="/leaderboard">
+                  <Leaderboard />
+                </Route>
+                <Route path="/questions/:id">
+                  <QuestionsPage />
+                </Route>
+                <Route path="/404">
+                  <ErrorPage />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
               </Switch>
             </Fragment>
           )}
