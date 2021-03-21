@@ -34,7 +34,7 @@ export default function Nav() {
     <nav className="nav">
       <ul>
         <li>
-          <NavLink to="/home" activeClassName="active">
+          <NavLink to="/" activeClassName="active">
             Home
           </NavLink>
         </li>

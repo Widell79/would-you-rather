@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { selectAuthedUser } from "../features/users/authedUserSlice";
+import { addQuestion } from "../features/questions/questionsSlice";
 
 const NewQuestion = () => {
   const [questionOne, setQuestionOne] = useState("");
   const [questionTwo, setQuestionTwo] = useState("");
+
+  const authedUser = useSelector(selectAuthedUser);
 
   const questionOneHandler = (e) => {
     const questionText = e.target.value;
@@ -16,8 +22,17 @@ const NewQuestion = () => {
   };
 
   let history = useHistory();
+  const dispatch = useDispatch();
 
-  const submitHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      addQuestion({
+        author: authedUser,
+        optionOneText: questionOne,
+        optionTwoText: questionTwo,
+      })
+    );
     history.push("/");
   };
 
@@ -27,7 +42,7 @@ const NewQuestion = () => {
       <div className="info">
         <div>
           <p>Would you rather..</p>
-          <form className="new-tweet" onSubmit={submitHandler}>
+          <form onSubmit={submitHandler}>
             <input
               type="text"
               placeholder="First Question"

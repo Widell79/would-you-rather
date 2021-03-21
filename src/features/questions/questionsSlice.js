@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { add_answer_user } from "../users/usersSlice";
-import { saveQuestionAnswer } from "../../utils/api";
+import { saveQuestionAnswer, saveQuestion } from "../../utils/api";
 
 export const questionsSlice = createSlice({
   name: "questions",
@@ -29,10 +29,23 @@ export const questionsSlice = createSlice({
         },
       };
     },
+    add_question: (state, action) => {
+      const { payload } = action;
+      return {
+        ...state,
+        [payload.id]: {
+          ...payload,
+        },
+      };
+    },
   },
 });
 
-export const { receive_questions, save_answer } = questionsSlice.actions;
+export const {
+  receive_questions,
+  save_answer,
+  add_question,
+} = questionsSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -47,7 +60,20 @@ export function saveAnswer(obj) {
       dispatch(add_answer_user(obj));
     } catch (err) {
       console.warn("Error in saveAnswer: ", err);
-      alert("There was an error saving your the answer. Please try again.");
+      alert("There was an error saving your answer. Please try again.");
+    }
+  };
+}
+export function addQuestion(obj) {
+  return async (dispatch) => {
+    try {
+      const formatQuestion = await saveQuestion(obj);
+      //object returned from API
+
+      dispatch(add_question(formatQuestion));
+    } catch (err) {
+      console.warn("Error in addQuestion: ", err);
+      alert("There was an error saving your question. Please try again.");
     }
   };
 }

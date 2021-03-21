@@ -24,8 +24,6 @@ function App() {
 
   let isLoggedIn = authedUser !== null;
 
-  //Todo: Check logout when url is tampered!
-
   return (
     <Router>
       <Fragment>
