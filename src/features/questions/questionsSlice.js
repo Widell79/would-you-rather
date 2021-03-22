@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { add_answer_user } from "../users/usersSlice";
+import { add_answer_user, add_question_user } from "../users/usersSlice";
 import { saveQuestionAnswer, saveQuestion } from "../../utils/api";
 
 export const questionsSlice = createSlice({
@@ -71,6 +71,7 @@ export function addQuestion(obj) {
       //object returned from API
 
       dispatch(add_question(formatQuestion));
+      dispatch(add_question_user(formatQuestion));
     } catch (err) {
       console.warn("Error in addQuestion: ", err);
       alert("There was an error saving your question. Please try again.");

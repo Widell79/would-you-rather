@@ -28,6 +28,16 @@ export const usersSlice = createSlice({
         },
       };
     },
+    add_question_user: (state, action) => {
+      const { author, id } = action.payload;
+      return {
+        ...state,
+        [author]: {
+          ...state[author],
+          questions: [...state[author].questions, id],
+        },
+      };
+    },
     add_user: (state, action) => {
       const { id, name, avatarURL, answers, questions } = action.payload;
       return {
@@ -44,7 +54,12 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { receive_users, add_answer_user, add_user } = usersSlice.actions;
+export const {
+  receive_users,
+  add_answer_user,
+  add_question_user,
+  add_user,
+} = usersSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
