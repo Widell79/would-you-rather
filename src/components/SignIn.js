@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import logo from "../images/logo.png";
 import { mapUsersToList } from "../utils/helpers";
 import { selectUsers } from "../features/users/usersSlice";
 import { setAuthedUser } from "../features/users/authedUserSlice";
+import CreateUser from "./CreateUser";
 
 const SignIn = () => {
   const [userLogin, setUserLogin] = useState("");
@@ -25,10 +27,9 @@ const SignIn = () => {
   return (
     <div className="container">
       <h3>Welcome to the Would You Rather App!</h3>
-      <p>Please sign in!</p>
+      <p>Please sign in or create a new user</p>
       <img src={logo} alt="" />
-      <h3>Sign In</h3>
-
+      <p>Sign In</p>
       <form onChange={handleChange} onSubmit={handleSubmit}>
         <label htmlFor="users"></label>
         <select name="users" className="form-control">
@@ -41,8 +42,12 @@ const SignIn = () => {
             );
           })}
         </select>
-        <button>Sign in</button>
+        <br />
+        <button className="btn" disabled={userLogin === ""}>
+          Sign in
+        </button>
       </form>
+      <CreateUser />
     </div>
   );
 };

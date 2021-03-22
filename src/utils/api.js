@@ -1,5 +1,6 @@
 import {
   _getUsers,
+  _saveUser,
   _getQuestions,
   _saveQuestion,
   _saveQuestionAnswer,
@@ -20,4 +21,8 @@ export function saveQuestion(question) {
 
 export function saveQuestionAnswer(object) {
   return _saveQuestionAnswer(object);
+}
+
+export function saveUser(object) {
+  return _saveUser(object);
 }

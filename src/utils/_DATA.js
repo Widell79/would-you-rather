@@ -203,3 +203,34 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
     }, 500);
   });
 }
+
+function formatUser({ userName, name }) {
+  return {
+    id: userName,
+    name: name,
+    avatarURL: "/avatars/Black-Widow.png",
+    answers: {},
+    questions: [],
+  };
+}
+
+export function _saveUser(user) {
+  return new Promise((res, rej) => {
+    const formattedUser = formatUser(user);
+
+    setTimeout(() => {
+      users = {
+        ...users,
+        [formattedUser.id]: {
+          id: formattedUser.id,
+          name: formattedUser.name,
+          avatarURL: formattedUser.avatarURL,
+          answers: formattedUser.answers,
+          questions: formattedUser.questions,
+        },
+      };
+
+      res(formattedUser);
+    }, 1000);
+  });
+}

@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
+
 import QuestionsPage from "./components/QuestionsPage";
 import NewQuestion from "./components/NewQuestion";
 import Leaderboard from "./components/Leaderboard";
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/404">
                   <ErrorPage />
                 </Route>
+
                 <Route path="/" exact>
                   <Home />
                 </Route>
