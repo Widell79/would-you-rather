@@ -7,6 +7,10 @@ body {
   font-size: calc(10px + 2vmin);
 }
 
+.App {
+  min-height: 80vh;
+}
+
 a {
   text-decoration: none;
   color: #252525;
@@ -18,6 +22,7 @@ p {
 
 .container {
   max-width: 1000px;
+
   margin: 0 auto;
   padding: 10px;
   border: 1px solid #dad7d7;
@@ -74,6 +79,16 @@ p {
   text-decoration: none;
 }
 
+.footer {
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ece2e1;
+  margin-top: 2rem;
+}
+
 ul {
   padding-left: 0;
 }
@@ -104,6 +119,7 @@ li p {
 
 .question {
   width: 100%;
+
   max-width: 30rem;
   padding: 1rem;
   display: flex;
