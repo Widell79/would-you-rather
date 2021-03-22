@@ -27,7 +27,7 @@ const SignIn = () => {
   return (
     <div className="container">
       <h3>Welcome to the Would You Rather App!</h3>
-      <p>Please sign in or create a new user</p>
+      <p>Sign in or create a new user</p>
       <img src={logo} alt="" />
       <p>Sign In</p>
       <form onChange={handleChange} onSubmit={handleSubmit}>

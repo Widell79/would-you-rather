@@ -27,6 +27,8 @@ const CreateUser = () => {
         name,
       })
     );
+    setUserName("");
+    setName("");
   };
 
   return (

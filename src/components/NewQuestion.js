@@ -49,7 +49,7 @@ const NewQuestion = () => {
               value={questionOne}
               onChange={questionOneHandler}
             />
-            <p>Or</p>
+            <span className="votes"> or </span>
             <input
               type="text"
               placeholder="Option Two"

@@ -208,7 +208,7 @@ function formatUser({ userName, name }) {
   return {
     id: userName,
     name: name,
-    avatarURL: "/avatars/Black-Widow.png",
+    avatarURL: "/avatars/Default.png",
     answers: {},
     questions: [],
   };
