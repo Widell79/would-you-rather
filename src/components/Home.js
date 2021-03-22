@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import Question from "./Question";
@@ -13,6 +13,13 @@ import {
 } from "../utils/helpers";
 
 const Home = () => {
+  const [questionList, setQuestionList] = useState("unanswered");
+
+  const questionListHandler = (e) => {
+    const list = e.target.value;
+    setQuestionList(list);
+  };
+
   const questions = useSelector(selectQuestions);
   const authedUser = useSelector(selectAuthedUser);
   const users = useSelector(selectUsers);
@@ -21,39 +28,53 @@ const Home = () => {
   const answered = answeredQuestionsInfo(users, authedUser, questions);
 
   return (
-    <div className="grid-container">
-      <div className="grid-item">
-        <h3>Unanswered Questions</h3>
-        <ul>
-          {unanswered.map((question) => (
-            <li key={question.id}>
-              <Question
-                author={question.author}
-                id={question.id}
-                timestamp={question.timestamp}
-                optionOne={question.optionOne.text}
-                optionTwo={question.optionTwo.text}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="center">
       <div>
-        <h3>Answered Questions</h3>
-        <ul>
-          {answered.map((question) => (
-            <li key={question.id}>
-              <Question
-                author={question.author}
-                id={question.id}
-                timestamp={question.timestamp}
-                optionOne={question.optionOne.text}
-                optionTwo={question.optionTwo.text}
-              />
-            </li>
-          ))}
-        </ul>
+        <button
+          className="home-btn"
+          type="submit"
+          value="unanswered"
+          onClick={questionListHandler}
+          disabled={questionList === "unanswered"}
+        >
+          Unanswered Questions
+        </button>
+        <button
+          className="home-btn"
+          type="submit"
+          value="answered"
+          onClick={questionListHandler}
+          disabled={questionList === "answered"}
+        >
+          Answered Questions
+        </button>
       </div>
+
+      <ul>
+        {questionList === "unanswered"
+          ? unanswered.map((question) => (
+              <li key={question.id}>
+                <Question
+                  author={question.author}
+                  id={question.id}
+                  timestamp={question.timestamp}
+                  optionOne={question.optionOne.text}
+                  optionTwo={question.optionTwo.text}
+                />
+              </li>
+            ))
+          : answered.map((question) => (
+              <li key={question.id}>
+                <Question
+                  author={question.author}
+                  id={question.id}
+                  timestamp={question.timestamp}
+                  optionOne={question.optionOne.text}
+                  optionTwo={question.optionTwo.text}
+                />
+              </li>
+            ))}
+      </ul>
     </div>
   );
 };

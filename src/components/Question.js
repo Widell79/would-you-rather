@@ -14,9 +14,9 @@ const Question = ({ author, optionOne, optionTwo, id, timestamp }) => {
   const name = usernameToName(users, author);
 
   return (
-    <div className="question">
+    <div className="center-container">
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-      <div className="center">
+      <div className="info">
         <div>
           <span>{name} asks</span>:
           <ul>

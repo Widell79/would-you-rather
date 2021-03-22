@@ -30,16 +30,6 @@ p {
   text-align: center;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-}
-
-.grid-item {
-  margin-left: 20rem;
-}
-
 .form-control {
   width: 10rem;
 }
@@ -52,6 +42,17 @@ p {
   background: #75cfb8;
   width: 150px;
   position: relative;
+  border-radius: 0.5rem;
+}
+
+.home-btn {
+  margin: 20px auto;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+  background: #75cfb8;
+  width: 300px;
+  font-size: calc(4px + 2vmin);
   border-radius: 0.5rem;
 }
 
@@ -115,17 +116,6 @@ li p {
   height: 50px;
   border-radius: 25px;
   margin-right: 1rem;
-}
-
-.question {
-  width: 100%;
-
-  max-width: 30rem;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  border: 3px solid #ece2e1;
-  border-radius: 3px;
 }
 
 .question-text {
