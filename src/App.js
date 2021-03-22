@@ -46,7 +46,7 @@ function App() {
                 <Route path="/404">
                   <ErrorPage />
                 </Route>
-                <Route path="/">
+                <Route path="/" exact>
                   <Home />
                 </Route>
               </Switch>

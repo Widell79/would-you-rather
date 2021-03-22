@@ -21,7 +21,7 @@ p {
   margin: 0 auto;
   padding: 10px;
   border: 1px solid #dad7d7;
-  background: #d3e0dc;
+  background: #b3dbcf;
   text-align: center;
 }
 
@@ -40,26 +40,14 @@ p {
 }
 
 .btn {
-  text-transform: uppercase;
-  margin: 35px auto;
-  padding: 10px;
+  margin: 20px auto;
+  padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.29);
   cursor: pointer;
-  background: #fff;
-  font-size: 16px;
-  width: 250px;
+  background: #75cfb8;
+  width: 150px;
   position: relative;
-}
-
-.my-btn {
-  display: inline-block;
-  background: #ff9292;
-  padding: 10px 16px;
-  border-radius: 10px;
-  margin-top: 20px;
-  font-size: 1rem;
-  color: black;
-  cursor: pointer;
+  border-radius: 0.5rem;
 }
 
 .center {
@@ -120,8 +108,7 @@ li p {
   padding: 1rem;
   display: flex;
   justify-content: center;
-
-  border: 1px solid #dad7d7;
+  border: 3px solid #ece2e1;
   border-radius: 3px;
 }
 
@@ -129,9 +116,23 @@ li p {
   font-size: calc(4px + 2vmin);
 }
 
-.info {
-}
-
 .votes {
   font-size: calc(1px + 2vmin);
+}
+
+.center-container {
+  width: 100%;
+  max-width: 40rem;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+  border: 3px solid #ece2e1;
+  border-radius: 3px;
+}
+
+.info {
+  margin: auto;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
 }

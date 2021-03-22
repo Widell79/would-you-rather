@@ -34,19 +34,15 @@ export default function Nav() {
     <nav className="nav">
       <ul>
         <li>
-          <NavLink to="/" activeClassName="active">
+          <NavLink exact to="/">
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/add" activeClassName="active">
-            New Question
-          </NavLink>
+          <NavLink to="/add">New Question</NavLink>
         </li>
         <li>
-          <NavLink to="/leaderboard" activeClassName="active">
-            Leaderboard
-          </NavLink>
+          <NavLink to="/leaderboard">Leaderboard</NavLink>
         </li>
         {authedUser === null ? (
           <li></li>

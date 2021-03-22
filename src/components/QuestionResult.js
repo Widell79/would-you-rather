@@ -2,7 +2,7 @@ import React from "react";
 
 const QuestionResult = ({ details, avatar, name }) => {
   return (
-    <div className="question">
+    <div className="center-container">
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
       <div className="info">
         <div>

@@ -23,7 +23,7 @@ const Leaderboard = () => {
   return (
     <div>
       <h3 className="center">Leaderboard</h3>
-      <div className="question">
+      <div className="center-container">
         <div className="info">
           <ul>
             {leader.map((lead) => (

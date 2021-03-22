@@ -37,27 +37,28 @@ const NewQuestion = () => {
   };
 
   return (
-    <div className="question">
-      <h2>Create New Question</h2>
-      <div className="info">
-        <div>
+    <div>
+      <h3 className="center">Create New Question</h3>
+      <div className="center-container">
+        <div className="info">
           <p>Would you rather..</p>
           <form onSubmit={submitHandler}>
             <input
               type="text"
-              placeholder="First Question"
+              placeholder="Option One"
               value={questionOne}
               onChange={questionOneHandler}
             />
             <p>Or</p>
             <input
               type="text"
-              placeholder="Second Question"
+              placeholder="Option Two"
               value={questionTwo}
               onChange={questionTwoHandler}
             />
+            <br />
             <button
-              className="my-btn"
+              className="btn"
               type="submit"
               disabled={questionOne === "" || questionTwo === ""}
             >

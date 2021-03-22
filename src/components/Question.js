@@ -23,7 +23,7 @@ const Question = ({ author, optionOne, optionTwo, id, timestamp }) => {
             <li className="question-text">{optionOne}..</li>
           </ul>
           <Link to={`/questions/${id}`}>
-            <button>View Poll</button>
+            <button className="btn">View Poll</button>
           </Link>
           <p>{formatDate(timestamp)}</p>
         </div>

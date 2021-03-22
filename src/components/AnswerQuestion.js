@@ -28,7 +28,7 @@ const AnswerQuestion = ({ details, avatar, name }) => {
   };
 
   return (
-    <div className="question">
+    <div className="center-container">
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
       <div className="info">
         <div>
@@ -57,7 +57,13 @@ const AnswerQuestion = ({ details, avatar, name }) => {
               {details[0].optionTwo.text}?
             </li>
           </ul>
-          <button onClick={handleSubmit}>Submit</button>
+          <button
+            className="btn"
+            onClick={handleSubmit}
+            disabled={userVote === ""}
+          >
+            Submit
+          </button>
         </div>
       </div>
     </div>
