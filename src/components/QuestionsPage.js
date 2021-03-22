@@ -49,12 +49,11 @@ const QuestionsPage = () => {
   }
 
   const details = QuestionInfo(questions, id);
-  const name = usernameToName(users, details[0].author);
-  const avatar = avatarURL(users, details[0].author);
-
-  if (!id) {
+  if (!id || details.length === 0) {
     return <ErrorPage />;
   }
+  const name = usernameToName(users, details[0].author);
+  const avatar = avatarURL(users, details[0].author);
 
   return (
     <div>
